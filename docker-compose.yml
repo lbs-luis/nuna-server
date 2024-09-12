@@ -14,24 +14,7 @@ services:
       - POSTGRES_DB=nuna_db
     networks:
       - nuna-network
-
-  nuna-server:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: nuna-server
-    ports:
-      - '3000:3000'
-    volumes:
-      - .:/usr/src/app
-    environment:
-      - PORT=3333
-      - DATABASE_URL=postgresql://docker:docker@nuna-db:5432/nuna_db # Usando o nome do serviço como host
-    depends_on:
-      - nuna-db
-    networks:
-      - nuna-network
-
+      
 volumes:
   nuna-db-data:
     driver: local
